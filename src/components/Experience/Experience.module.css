@@ -1,0 +1,217 @@
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Vertical line */
+.line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--cyan), var(--purple), var(--cyan));
+  transform-origin: top center;
+  border-radius: 2px;
+}
+
+/* ─── Item ─── */
+.item {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.item.left {
+  justify-content: flex-end;
+  padding-right: calc(50% + 40px);
+}
+
+.item.right {
+  justify-content: flex-start;
+  padding-left: calc(50% + 40px);
+}
+
+/* ─── Dot ─── */
+.dot {
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid var(--bg-primary);
+  z-index: 1;
+}
+
+.dotCyan {
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+.dotPurple {
+  background: var(--purple-light);
+  box-shadow: 0 0 12px var(--purple);
+}
+
+/* ─── Card ─── */
+.card {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.cardCyan::before {
+  background: linear-gradient(90deg, var(--cyan), transparent);
+}
+
+.cardPurple::before {
+  background: linear-gradient(90deg, var(--purple), transparent);
+}
+
+.cardCyan:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: var(--shadow-cyan);
+}
+
+.cardPurple:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow: var(--shadow-purple);
+}
+
+/* ─── Card Top ─── */
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.cardMeta { flex: 1; }
+
+.roleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.3rem;
+}
+
+.role {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.currentBadge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--cyan);
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  flex-wrap: wrap;
+}
+
+.metaIcon {
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.separator { color: var(--border-hover); }
+
+.period { color: var(--text-secondary); }
+
+.typeBadge {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ─── Bullets ─── */
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.bulletIcon {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--cyan);
+  font-size: 0.85rem;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 860px) {
+  .line { left: 16px; transform: none; }
+  .dot  { left: 16px; transform: translateX(-50%); }
+
+  .item.left,
+  .item.right {
+    justify-content: flex-start;
+    padding-left: 52px;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardTop { flex-direction: column; gap: 0.5rem; }
+}

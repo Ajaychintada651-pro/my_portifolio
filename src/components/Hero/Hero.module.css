@@ -1,0 +1,338 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: calc(var(--nav-height) + 3rem) clamp(1.5rem, 6vw, 5rem) 4rem;
+}
+
+/* Background glow orbs */
+.glow1 {
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ─── Text Column ─── */
+.textCol {
+  flex: 1;
+  max-width: 620px;
+}
+
+.greeting {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.name {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+}
+
+.roleRow {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  min-height: 2.2rem;
+}
+
+.roleStatic {
+  color: var(--text-secondary);
+}
+
+.typewriter {
+  color: var(--cyan);
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 0.9s step-start infinite;
+  color: var(--cyan);
+  margin-left: 1px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+}
+
+/* ─── CTA Buttons ─── */
+.ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.btnPrimary {
+  padding: 0.8rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0a0a0f;
+  background: var(--cyan);
+  border-radius: var(--radius-md);
+  transition: background var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+}
+
+.btnPrimary:hover {
+  background: var(--cyan-dim);
+  box-shadow: 0 0 24px var(--cyan-glow-md);
+}
+
+.btnSecondary {
+  padding: 0.8rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--purple-light);
+  border: 2px solid var(--purple);
+  border-radius: var(--radius-md);
+  transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.btnSecondary:hover {
+  background: var(--purple-glow);
+  border-color: var(--purple-light);
+  box-shadow: 0 0 24px var(--purple-glow-md);
+}
+
+/* ─── Socials ─── */
+.socials {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  transition: color var(--transition), border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.social:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: var(--shadow-cyan);
+  transform: translateY(-3px);
+}
+
+/* ─── Visual Column ─── */
+.visualCol {
+  flex-shrink: 0;
+  width: 380px;
+  height: 380px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rings */
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.ring1 {
+  width: 100%;
+  height: 100%;
+  border-color: rgba(0, 212, 255, 0.25);
+  animation: spinSlow 20s linear infinite;
+}
+
+.ring2 {
+  width: 75%;
+  height: 75%;
+  border-color: rgba(124, 58, 237, 0.3);
+  border-style: dashed;
+  animation: spinSlow 14s linear infinite reverse;
+}
+
+.ring3 {
+  width: 50%;
+  height: 50%;
+  border-color: rgba(0, 212, 255, 0.2);
+  animation: spinSlow 10s linear infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.centerIcon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));
+  border: 2px solid rgba(0, 212, 255, 0.4);
+  color: var(--cyan);
+  box-shadow: 0 0 40px rgba(0,212,255,0.2), inset 0 0 20px rgba(0,212,255,0.05);
+}
+
+/* Particles */
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0.6;
+  transform: rotate(calc(var(--i) * 60deg)) translateX(140px);
+  box-shadow: 0 0 8px var(--cyan);
+}
+
+.particle:nth-child(even) {
+  background: var(--purple);
+  box-shadow: 0 0 8px var(--purple);
+}
+
+/* Floating Badges */
+.badge {
+  position: absolute;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  z-index: 3;
+}
+
+.badgeLangChain {
+  top: 0;
+  left: -10px;
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--cyan);
+}
+
+.badgeRAG {
+  bottom: 20px;
+  right: -20px;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  color: var(--purple-light);
+}
+
+.badgeFastAPI {
+  bottom: 60px;
+  left: -20px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--cyan-dim);
+}
+
+/* ─── Scroll Indicator ─── */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.scrollIndicator:hover {
+  color: var(--cyan);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .textCol {
+    max-width: 100%;
+  }
+
+  .subtitle { margin-left: auto; margin-right: auto; }
+
+  .ctas { justify-content: center; }
+  .socials { justify-content: center; }
+  .roleRow { justify-content: center; }
+
+  .visualCol {
+    width: 280px;
+    height: 280px;
+  }
+
+  .orb { width: 220px; height: 220px; }
+  .particle { transform: rotate(calc(var(--i) * 60deg)) translateX(110px); }
+}
+
+@media (max-width: 480px) {
+  .visualCol { display: none; }
+}

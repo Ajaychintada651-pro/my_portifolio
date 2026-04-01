@@ -1,0 +1,124 @@
+:root {
+  /* Backgrounds */
+  --bg-primary:     #0a0a0f;
+  --bg-secondary:   #0d1117;
+  --bg-surface:     #161b22;
+  --bg-surface-2:   #1c2128;
+
+  /* Borders */
+  --border:         #21262d;
+  --border-hover:   #30363d;
+
+  /* Cyan accent */
+  --cyan:           #00d4ff;
+  --cyan-dim:       #00a8cc;
+  --cyan-glow:      rgba(0, 212, 255, 0.15);
+  --cyan-glow-md:   rgba(0, 212, 255, 0.25);
+
+  /* Purple accent */
+  --purple:         #7c3aed;
+  --purple-light:   #9d5cf7;
+  --purple-glow:    rgba(124, 58, 237, 0.15);
+  --purple-glow-md: rgba(124, 58, 237, 0.25);
+
+  /* Gold */
+  --gold:           #f5b820;
+  --gold-glow:      rgba(245, 184, 32, 0.2);
+
+  /* Gradients */
+  --gradient-text:    linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+  --gradient-border:  linear-gradient(135deg, #00d4ff, #7c3aed);
+  --gradient-bg:      linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.05));
+
+  /* Text */
+  --text-primary:   #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted:     #484f58;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --nav-height: 72px;
+  --section-pad: clamp(4.5rem, 8vw, 7rem);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Shadows */
+  --shadow-cyan:   0 0 40px rgba(0, 212, 255, 0.12);
+  --shadow-purple: 0 0 40px rgba(124, 58, 237, 0.12);
+  --shadow-card:   0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg:     0 20px 60px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --transition:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+ul, ol { list-style: none; }
+
+/* ─── Custom Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--cyan), var(--purple));
+  border-radius: 3px;
+}
+
+/* ─── Selection ─────────────────────────────────────────── */
+::selection {
+  background: var(--cyan-glow-md);
+  color: var(--cyan);
+}
+
+/* ─── Global Utilities ───────────────────────────────────── */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-wrapper {
+  padding: var(--section-pad) clamp(1.5rem, 6vw, 5rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ─── Focus styles ───────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
