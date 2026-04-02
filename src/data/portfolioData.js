@@ -40,6 +40,7 @@ export const skills = [
     items: [
       { name: 'AWS S3',       icon: 'FaAws',         level: 70 },
       { name: 'PostgreSQL',   icon: 'SiPostgresql',  level: 76 },
+      { name: 'Docker',       icon: 'FaDocker',      level: 80 },
       { name: 'Supabase',     icon: 'SiSupabase',    level: 74 },
       { name: 'GitHub',       icon: 'SiGithub',      level: 85 },
     ],

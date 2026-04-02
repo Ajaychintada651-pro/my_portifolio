@@ -10,7 +10,7 @@ const scenarios = [
     keywords: ['langchain', 'rag', 'llm', 'large language model', 'huggingface', 'hugging face', 'fastapi', 'embeddings', 'vector', 'retrieval', 'generative ai', 'openai', 'claude', 'gpt', 'transformer', 'nlp', 'natural language'],
     score: 88,
     matchedSkills: ['LangChain', 'RAG Pipelines', 'HuggingFace', 'FastAPI', 'Python', 'Prompt Engineering', 'AWS S3'],
-    gapSkills: ['Docker', 'Kubernetes'],
+    gapSkills: ['Kubernetes'],
     tailoredSummary:
       'Ajay is an excellent fit for this role. His hands-on production experience building RAG systems with LangChain, HuggingFace, and hybrid retrieval (MMR + BM25) aligns directly with the core requirements. His FastAPI backend skills, AWS S3 integration, and 40–60% latency optimization work add strong engineering depth that goes beyond typical AI/ML candidates.',
   },
@@ -19,7 +19,7 @@ const scenarios = [
     keywords: ['react', 'node', 'node.js', 'javascript', 'typescript', 'frontend', 'backend', 'postgresql', 'full stack', 'fullstack', 'web developer', 'html', 'css', 'rest api'],
     score: 72,
     matchedSkills: ['React.js', 'Node.js', 'PostgreSQL', 'REST APIs', 'HTML / CSS', 'JavaScript'],
-    gapSkills: ['TypeScript', 'Next.js', 'Docker'],
+    gapSkills: ['TypeScript', 'Next.js'],
     tailoredSummary:
       'Ajay has solid full-stack experience from building the TapTap admin portal at Blackbucks using React, Node.js, and PostgreSQL — achieving 30% efficiency gains. While his primary focus has since shifted to AI/ML engineering, his frontend and backend foundations are strong and production-tested.',
   },
@@ -28,7 +28,7 @@ const scenarios = [
     keywords: ['python', 'api', 'rest', 'microservices', 'aws', 'cloud', 'database', 'supabase', 'scalable', 'backend engineer', 'server', 'django', 'flask'],
     score: 68,
     matchedSkills: ['Python', 'FastAPI', 'REST APIs', 'AWS S3', 'PostgreSQL', 'Supabase', 'GitHub'],
-    gapSkills: ['Docker', 'Kubernetes', 'Go'],
+    gapSkills: ['Kubernetes', 'Go'],
     tailoredSummary:
       "Ajay's backend expertise with FastAPI and Python is a strong match. His production deployments at Proxima Systems include scalable async FastAPI services with AWS S3 document storage and Supabase/PostgreSQL data management. His experience with concurrent request handling and memory-efficient pipelines shows real engineering maturity.",
   },
