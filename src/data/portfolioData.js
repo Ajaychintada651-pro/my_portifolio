@@ -6,7 +6,7 @@ export const personal = {
   email: 'chintadaajay72645@gmail.com',
   github2: 'Ajaychintada651-pro',
   linkedin: 'https://www.linkedin.com/in/ajay-chintada-0a30761a0/',
-  location: 'Pune, Maharashtra, India',
+  location: 'AndhraPradesh, India',
   roles: ['AI/ML Engineer', 'LangChain Developer', 'RAG Architect',],
 }
 
@@ -59,10 +59,11 @@ export const experience = [
     role: 'AI/ML Engineer',
     company: 'Proxima Systems Pvt Ltd',
     period: 'May 2025 – Present',
-    location: 'Pune, India',
+    location: 'Remote',
     type: 'Full-time',
     current: true,
     accent: 'cyan',
+    tags: ['LangChain', 'RAG', 'FastAPI', 'AWS S3', 'Gusto MCP', 'HuggingFace'],
     bullets: [
       'Enhanced AI-powered enterprise assistants using LangChain, Hugging Face, and RAG pipelines for intelligent document retrieval and automation.',
       'Built production-grade RAG system with hybrid retrieval (MMR + BM25), vector embeddings, reranking, and response validation for high accuracy.',
@@ -81,11 +82,29 @@ export const experience = [
     type: 'Full-time',
     current: false,
     accent: 'purple',
+    tags: ['SAP HANA', 'System Monitoring', 'Performance Optimization'],
     bullets: [
       'Successfully completed training in SAP HANA system management.',
       'Worked on system monitoring, backup strategies, and performance optimization.',
       'Collaborated with cross-functional teams to troubleshoot software reliability and performance issues.',
       'Recognized on the Wall of Fame at Accenture for outstanding contributions as an SAP Basis Consultant.',
+    ],
+  },
+  {
+    role: 'Full Stack Developer Intern',
+    company: 'Blackbucks Education Pvt Ltd',
+    period: 'Jul 2024 – Oct 2024',
+    location: 'Hyderabad, India',
+    type: 'Internship',
+    current: false,
+    accent: 'cyan',
+    tags: ['React.js', 'Node.js', 'PostgreSQL', 'JavaScript', 'HTML/CSS'],
+    bullets: [
+      'Developed responsive web applications using HTML, CSS, JavaScript, and React.js.',
+      'Built and optimized backend services using Node.js and PostgreSQL.',
+      'Worked extensively on the TapTap admin portal, managing user authentication, course listings, and internship opportunities for students.',
+      'Implemented dashboards for admins to track student enrollments and course progress.',
+      'Adopted a data-driven approach for managing course enrollments, tracking progress, and automating job postings, improving efficiency by 30%.',
     ],
   },
   {
@@ -96,6 +115,7 @@ export const experience = [
     type: 'Internship',
     current: false,
     accent: 'cyan',
+    tags: ['React.js', 'Material UI', 'Axios', 'JavaScript'],
     bullets: [
       'Developed a responsive Employee Profile Management System using React.js for efficient data handling.',
       'Integrated Axios and third-party libraries for smooth frontend-backend communication.',

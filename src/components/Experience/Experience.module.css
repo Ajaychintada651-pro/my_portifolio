@@ -5,6 +5,21 @@
   gap: 2rem;
 }
 
+/* Ambient glow behind timeline */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  background:
+    radial-gradient(ellipse 30% 50% at 15% 50%, rgba(0, 212, 255, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 50% at 85% 50%, rgba(124, 58, 237, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Vertical line */
 .line {
   position: absolute;
@@ -16,6 +31,7 @@
   background: linear-gradient(180deg, var(--cyan), var(--purple), var(--cyan));
   transform-origin: top center;
   border-radius: 2px;
+  z-index: 1;
 }
 
 /* ─── Item ─── */
@@ -23,6 +39,7 @@
   display: flex;
   position: relative;
   width: 100%;
+  z-index: 1;
 }
 
 .item.left {
@@ -45,7 +62,7 @@
   height: 16px;
   border-radius: 50%;
   border: 3px solid var(--bg-primary);
-  z-index: 1;
+  z-index: 2;
 }
 
 .dotCyan {
@@ -56,6 +73,26 @@
 .dotPurple {
   background: var(--purple-light);
   box-shadow: 0 0 12px var(--purple);
+}
+
+/* Pulsing ring for current role */
+.dotCurrent {
+  position: absolute;
+}
+
+.dotCurrent::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--cyan);
+  animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseRing {
+  0%   { opacity: 0.8; transform: scale(1); }
+  70%  { opacity: 0;   transform: scale(1.8); }
+  100% { opacity: 0;   transform: scale(1.8); }
 }
 
 /* ─── Card ─── */
@@ -199,8 +236,40 @@
   font-size: 0.85rem;
 }
 
+/* ─── Tech Tags ─── */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+
+.tagCyan {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  color: var(--cyan);
+}
+
+.tagPurple {
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: var(--purple-light);
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 860px) {
+  .timeline::before { display: none; }
+
   .line { left: 16px; transform: none; }
   .dot  { left: 16px; transform: translateX(-50%); }
 
@@ -212,6 +281,36 @@
   }
 }
 
+@media (max-width: 600px) {
+  .card {
+    padding: 1.25rem;
+  }
+
+  .bullet {
+    font-size: 0.84rem;
+  }
+
+  .tags {
+    margin-top: 1rem;
+    padding-top: 0.875rem;
+  }
+}
+
 @media (max-width: 480px) {
   .cardTop { flex-direction: column; gap: 0.5rem; }
+}
+
+@media (max-width: 380px) {
+  .item.left,
+  .item.right {
+    padding-left: 40px;
+  }
+
+  .role {
+    font-size: 1rem;
+  }
+
+  .bullet {
+    font-size: 0.82rem;
+  }
 }

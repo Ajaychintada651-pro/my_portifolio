@@ -33,7 +33,7 @@ export default function Experience() {
               >
                 {/* Timeline dot */}
                 <motion.div
-                  className={`${styles.dot} ${job.accent === 'cyan' ? styles.dotCyan : styles.dotPurple}`}
+                  className={`${styles.dot} ${job.accent === 'cyan' ? styles.dotCyan : styles.dotPurple} ${job.current ? styles.dotCurrent : ''}`}
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
@@ -81,6 +81,20 @@ export default function Experience() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Tech tags */}
+                  {job.tags && job.tags.length > 0 && (
+                    <div className={styles.tags}>
+                      {job.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className={`${styles.tag} ${job.accent === 'cyan' ? styles.tagCyan : styles.tagPurple}`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               </div>
             )
