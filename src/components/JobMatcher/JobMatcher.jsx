@@ -4,68 +4,188 @@ import styles from './JobMatcher.module.css'
 
 const CIRCUMFERENCE = 2 * Math.PI * 52
 
-const scenarios = [
+// ─── Ajay's actual skills with JD keyword triggers ───────────────────────────
+const AJAY_SKILLS = {
+  'LangChain':          ['langchain', 'lang chain'],
+  'RAG Pipelines':      ['rag', 'retrieval augmented', 'retrieval-augmented', 'retrieval augment'],
+  'HuggingFace':        ['huggingface', 'hugging face', 'hf model', 'sentence transformer'],
+  'FastAPI':            ['fastapi', 'fast api'],
+  'Python':             ['python'],
+  'Prompt Engineering': ['prompt engineer', 'prompt design', 'prompt tuning', 'prompt optim'],
+  'AWS S3':             ['aws', 'amazon web service', 's3 bucket', 'ec2', 'amazon s3'],
+  'Supabase':           ['supabase'],
+  'PostgreSQL':         ['postgresql', 'postgres', 'psql'],
+  'REST APIs':          ['rest api', 'restful api', 'rest endpoint', 'api development', 'api design'],
+  'SQL':                ['sql', ' mysql', 'sqlite', 'database query'],
+  'React.js':           ['react', 'reactjs', 'react.js', 'react js'],
+  'Node.js':            ['node.js', 'nodejs', 'node js', 'express.js', 'expressjs'],
+  'Vector DB':          ['vector db', 'vector database', 'pinecone', 'weaviate', 'chroma', 'qdrant', 'faiss', 'milvus'],
+  'OpenAI / GPT':       ['openai', 'gpt-4', 'gpt-3', 'gpt4', 'chatgpt', 'chat gpt'],
+  'Embeddings':         ['embedding', 'semantic search', 'dense retrieval'],
+  'HTML / CSS':         ['html', 'css', 'tailwind', 'sass', 'frontend dev'],
+  'GitHub':             ['github', 'git workflow', 'version control', 'ci/cd'],
+}
+
+// ─── Skills Ajay doesn't have (detected as gaps from JD) ─────────────────────
+const GAP_SKILLS = {
+  'Kubernetes':   ['kubernetes', 'k8s', 'kubectl', 'helm chart'],
+  'TypeScript':   ['typescript', ' ts ', '.ts ', 'strict typing'],
+  'Next.js':      ['next.js', 'nextjs', 'next js', 'server-side render', 'ssr'],
+  'Go / Golang':  ['golang', ' go lang', 'go programming', 'goroutine'],
+  'TensorFlow':   ['tensorflow', 'tf.keras', 'keras'],
+  'PyTorch':      ['pytorch', 'torch.nn', 'torchvision'],
+  'Scikit-learn': ['scikit', 'sklearn', 'scikit-learn'],
+  'GraphQL':      ['graphql', 'apollo', 'gql'],
+  'Redis':        ['redis', 'memcached', 'in-memory cache'],
+  'Spark':        ['apache spark', 'pyspark', 'spark sql'],
+  'Java':         ['java ', 'spring boot', 'jvm', 'maven', 'gradle'],
+  'C++ / Rust':   ['c++', 'rust lang', 'systems programming'],
+}
+
+// ─── Scenario domains with weighted keyword signals ───────────────────────────
+const SCENARIOS = [
   {
     id: 'aiml',
-    keywords: ['langchain', 'rag', 'llm', 'large language model', 'huggingface', 'hugging face', 'fastapi', 'embeddings', 'vector', 'retrieval', 'generative ai', 'openai', 'claude', 'gpt', 'transformer', 'nlp', 'natural language'],
-    score: 88,
-    matchedSkills: ['LangChain', 'RAG Pipelines', 'HuggingFace', 'FastAPI', 'Python', 'Prompt Engineering', 'AWS S3'],
-    gapSkills: ['Kubernetes'],
-    tailoredSummary:
-      'Ajay is an excellent fit for this role. His hands-on production experience building RAG systems with LangChain, HuggingFace, and hybrid retrieval (MMR + BM25) aligns directly with the core requirements. His FastAPI backend skills, AWS S3 integration, and 40–60% latency optimization work add strong engineering depth that goes beyond typical AI/ML candidates.',
+    primaryKeywords: [
+      'langchain', 'rag', 'retrieval augmented', 'llm', 'large language model',
+      'generative ai', 'gen ai', 'openai', 'gpt', 'claude', 'gemini',
+      'huggingface', 'hugging face', 'transformer', 'embedding', 'vector',
+      'semantic search', 'fine-tun', 'prompt engineer', 'ai engineer',
+      'machine learning engineer', 'mlops', 'inference', 'langraph', 'langgraph',
+      'autonomous agent', 'ai agent', 'multimodal', 'foundation model',
+    ],
+    secondaryKeywords: [
+      'nlp', 'natural language', 'python', 'fastapi', 'aws', 'model deploy',
+      'text generation', 'summariz', 'classification', 'neural', 'bert',
+    ],
+    baseScore: 88,
+    summaryKey: 'aiml',
   },
   {
     id: 'fullstack',
-    keywords: ['react', 'node', 'node.js', 'javascript', 'typescript', 'frontend', 'backend', 'postgresql', 'full stack', 'fullstack', 'web developer', 'html', 'css', 'rest api'],
-    score: 72,
-    matchedSkills: ['React.js', 'Node.js', 'PostgreSQL', 'REST APIs', 'HTML / CSS', 'JavaScript'],
-    gapSkills: ['TypeScript', 'Next.js'],
-    tailoredSummary:
-      'Ajay has solid full-stack experience from building the TapTap admin portal at Blackbucks using React, Node.js, and PostgreSQL — achieving 30% efficiency gains. While his primary focus has since shifted to AI/ML engineering, his frontend and backend foundations are strong and production-tested.',
+    primaryKeywords: [
+      'react', 'next.js', 'nextjs', 'full stack', 'fullstack', 'full-stack',
+      'frontend engineer', 'frontend developer', 'vue', 'angular', 'svelte',
+      'tailwind', 'javascript', 'typescript', 'web application', 'spa',
+    ],
+    secondaryKeywords: [
+      'node', 'express', 'rest api', 'graphql', 'html', 'css', 'ui', 'ux',
+      'responsive', 'webpack', 'vite', 'jest', 'cypress', 'postgresql',
+    ],
+    baseScore: 72,
+    summaryKey: 'fullstack',
   },
   {
     id: 'backend',
-    keywords: ['python', 'api', 'rest', 'microservices', 'aws', 'cloud', 'database', 'supabase', 'scalable', 'backend engineer', 'server', 'django', 'flask'],
-    score: 68,
-    matchedSkills: ['Python', 'FastAPI', 'REST APIs', 'AWS S3', 'PostgreSQL', 'Supabase', 'GitHub'],
-    gapSkills: ['Kubernetes', 'Go'],
-    tailoredSummary:
-      "Ajay's backend expertise with FastAPI and Python is a strong match. His production deployments at Proxima Systems include scalable async FastAPI services with AWS S3 document storage and Supabase/PostgreSQL data management. His experience with concurrent request handling and memory-efficient pipelines shows real engineering maturity.",
+    primaryKeywords: [
+      'backend engineer', 'backend developer', 'fastapi', 'django', 'flask',
+      'microservice', 'api development', 'rest api', 'grpc', 'server-side',
+      'distributed system', 'system design', 'scalable backend', 'cloud-native',
+    ],
+    secondaryKeywords: [
+      'python', 'aws', 'postgresql', 'supabase', 'redis', 'docker', 'kafka',
+      'async', 'concurrent', 'celery', 'database', 'orm', 'sqlalchemy',
+    ],
+    baseScore: 68,
+    summaryKey: 'backend',
   },
   {
     id: 'datascience',
-    keywords: ['machine learning', 'deep learning', 'tensorflow', 'pytorch', 'scikit', 'data science', 'data scientist', 'analytics', 'statistics', 'computer vision', 'model training', 'jupyter'],
-    score: 60,
-    matchedSkills: ['Python', 'HuggingFace', 'SQL', 'Prompt Engineering'],
-    gapSkills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Statistics'],
-    tailoredSummary:
-      "Ajay's background in applied NLP and LLM engineering gives him relevant ML exposure. His HuggingFace transformer experience and text processing work are directly applicable. His focus has been on production AI systems rather than research/experimental ML, making him better suited for applied ML roles than pure data science research.",
-  },
-  {
-    id: 'default',
-    keywords: [],
-    score: 24,
-    matchedSkills: ['Python', 'GitHub'],
-    gapSkills: ['Role-specific skills not identified'],
-    tailoredSummary:
-      "Ajay's profile has limited overlap with this specific role based on the keywords detected. However, his strong Python foundation, problem-solving track record (2nd place Hackathon, Wall of Fame at Accenture), and fast learning curve make him worth a conversation for adjacent opportunities.",
+    primaryKeywords: [
+      'data scientist', 'machine learning', 'deep learning', 'tensorflow',
+      'pytorch', 'scikit-learn', 'sklearn', 'statistical model', 'data analysis',
+      'predictive model', 'regression', 'classification', 'clustering',
+      'feature engineer', 'model training', 'jupyter', 'pandas', 'numpy',
+      'computer vision', 'object detection', 'image recognit',
+    ],
+    secondaryKeywords: [
+      'python', 'sql', 'spark', 'tableau', 'power bi', 'analytics',
+      'a/b test', 'experiment', 'visualization', 'matplotlib', 'seaborn',
+    ],
+    baseScore: 60,
+    summaryKey: 'datascience',
   },
 ]
 
-function matchScenario(jdText) {
-  const lower = jdText.toLowerCase()
-  let bestHits = 0
-  let bestScenario = scenarios[4]
+const SUMMARIES = {
+  aiml: 'Ajay is an excellent fit for this role. His hands-on production experience building RAG systems with LangChain, HuggingFace, and hybrid retrieval (MMR + BM25) aligns directly with the core requirements. His FastAPI backend skills, AWS S3 integration, and 40–60% latency optimization work add strong engineering depth that goes beyond typical AI/ML candidates.',
+  fullstack: 'Ajay has solid full-stack experience from building the TapTap admin portal at Blackbucks using React, Node.js, and PostgreSQL — achieving 30% efficiency gains. While his primary focus has since shifted to AI/ML engineering, his frontend and backend foundations are strong and production-tested.',
+  backend: "Ajay's backend expertise with FastAPI and Python is a strong match. His production deployments at Proxima Systems include scalable async FastAPI services with AWS S3 document storage and Supabase/PostgreSQL data management. His experience with concurrent request handling and memory-efficient pipelines shows real engineering maturity.",
+  datascience: "Ajay's background in applied NLP and LLM engineering gives him relevant ML exposure. His HuggingFace transformer experience and text processing work are directly applicable. His focus has been on production AI systems rather than research/experimental ML, making him better suited for applied ML roles than pure data science research.",
+  default: "Ajay's profile has limited overlap with this specific role based on the keywords detected. However, his strong Python foundation, problem-solving track record (2nd place Hackathon, Wall of Fame at Accenture), and fast learning curve make him worth a conversation for adjacent opportunities.",
+}
 
-  for (const s of scenarios.slice(0, 4)) {
-    const hits = s.keywords.filter((kw) => lower.includes(kw)).length
-    if (hits > bestHits) {
-      bestHits = hits
-      bestScenario = s
+// ─── Core matching logic ──────────────────────────────────────────────────────
+function analyzeJD(jdText) {
+  const lower = jdText.toLowerCase()
+
+  // Detect Ajay's skills present in JD
+  const matchedSkills = Object.entries(AJAY_SKILLS)
+    .filter(([, triggers]) => triggers.some((t) => lower.includes(t)))
+    .map(([skill]) => skill)
+
+  // Detect gap skills required by JD that Ajay lacks
+  const gapSkills = Object.entries(GAP_SKILLS)
+    .filter(([, triggers]) => triggers.some((t) => lower.includes(t)))
+    .map(([skill]) => skill)
+
+  // Score each scenario
+  let bestScenario = null
+  let bestScore = -1
+
+  for (const scenario of SCENARIOS) {
+    const primaryHits = scenario.primaryKeywords.filter((kw) => lower.includes(kw)).length
+    const secondaryHits = scenario.secondaryKeywords.filter((kw) => lower.includes(kw)).length
+    const totalSignal = primaryHits * 3 + secondaryHits
+    if (totalSignal > bestScore) {
+      bestScore = totalSignal
+      bestScenario = scenario
     }
   }
 
-  return bestScenario
+  // No meaningful signal → default
+  if (bestScore < 3) {
+    return {
+      score: 24,
+      matchedSkills: matchedSkills.length ? matchedSkills : ['Python', 'GitHub'],
+      gapSkills: gapSkills.length ? gapSkills.slice(0, 3) : ['Role-specific skills not identified'],
+      tailoredSummary: SUMMARIES.default,
+    }
+  }
+
+  // Dynamic score: base ± adjustments
+  const primaryHits = bestScenario.primaryKeywords.filter((kw) => lower.includes(kw)).length
+  const primaryDensity = primaryHits / bestScenario.primaryKeywords.length
+
+  // Bonus for high keyword density (up to +8)
+  const densityBonus = Math.round(primaryDensity * 8)
+  // Penalty for each gap skill required (up to -12 total, capped)
+  const gapPenalty = Math.min(gapSkills.length * 3, 12)
+
+  const rawScore = bestScenario.baseScore + densityBonus - gapPenalty
+  const finalScore = Math.max(28, Math.min(96, rawScore))
+
+  // Fallback matched/gap skills if JD had no detectable skills
+  const displayMatched = matchedSkills.length >= 2
+    ? matchedSkills
+    : bestScenario.id === 'aiml'   ? ['LangChain', 'RAG Pipelines', 'HuggingFace', 'FastAPI', 'Python']
+    : bestScenario.id === 'fullstack' ? ['React.js', 'Node.js', 'PostgreSQL', 'REST APIs', 'HTML / CSS']
+    : bestScenario.id === 'backend'   ? ['Python', 'FastAPI', 'REST APIs', 'AWS S3', 'PostgreSQL']
+    : ['Python', 'HuggingFace', 'SQL', 'Prompt Engineering']
+
+  const displayGaps = gapSkills.length
+    ? gapSkills.slice(0, 4)
+    : bestScenario.id === 'aiml'      ? ['Kubernetes']
+    : bestScenario.id === 'fullstack' ? ['TypeScript', 'Next.js']
+    : bestScenario.id === 'backend'   ? ['Kubernetes', 'Go / Golang']
+    : ['TensorFlow', 'PyTorch', 'Scikit-learn']
+
+  return {
+    score: finalScore,
+    matchedSkills: displayMatched,
+    gapSkills: displayGaps,
+    tailoredSummary: SUMMARIES[bestScenario.summaryKey],
+  }
 }
 
 function scoreColor(score) {
@@ -74,6 +194,7 @@ function scoreColor(score) {
   return 'var(--text-muted)'
 }
 
+// ─── Component ────────────────────────────────────────────────────────────────
 export default function JobMatcher() {
   const [jobDesc, setJobDesc] = useState('')
   const [loading, setLoading] = useState(false)
@@ -84,7 +205,7 @@ export default function JobMatcher() {
     setLoading(true)
     setResult(null)
     setTimeout(() => {
-      setResult(matchScenario(jobDesc))
+      setResult(analyzeJD(jobDesc))
       setLoading(false)
     }, 1400)
   }
@@ -159,14 +280,12 @@ export default function JobMatcher() {
               {/* Score Ring */}
               <div className={styles.scoreWrap}>
                 <svg width="128" height="128" viewBox="0 0 128 128">
-                  {/* Track */}
                   <circle
                     cx="64" cy="64" r="52"
                     fill="none"
                     stroke="rgba(255,255,255,0.06)"
                     strokeWidth="10"
                   />
-                  {/* Fill */}
                   <motion.circle
                     cx="64" cy="64" r="52"
                     fill="none"
