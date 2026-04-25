@@ -56,9 +56,10 @@ export const skills = [
   {
     category: 'Tools',
     items: [
-      { name: 'Gusto MCP',  icon: 'FaPlug',     level: 80 },
-      { name: 'Keka API',   icon: 'FaLayerGroup', level: 72 },
-      { name: 'VS Code',    icon: 'SiVisualstudiocode', level: 92 },
+      { name: 'VS Code',     icon: 'SiVisualstudiocode', level: 92 },
+      { name: 'Claude Code', icon: 'FaRobot',            level: 85 },
+      { name: 'Git',         icon: 'SiGit',              level: 88 },
+      { name: 'Postman',     icon: 'SiPostman',          level: 82 },
     ],
   },
 ]

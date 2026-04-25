@@ -4,10 +4,11 @@ import {
   SiPython, SiJavascript, SiHtml5, SiPostgresql,
   SiFastapi, SiReact, SiMui, SiSupabase,
   SiGithub, SiNodedotjs, SiVisualparadigm,
+  SiGit, SiPostman,
 } from 'react-icons/si'
 import {
   FaBrain, FaMicrochip, FaServer, FaAws, FaPlug, FaLayerGroup,
-  FaBell, FaDocker,
+  FaBell, FaDocker, FaRobot,
 } from 'react-icons/fa'
 import SectionHeading from '../shared/SectionHeading'
 import { skills } from '../../data/portfolioData'
@@ -17,9 +18,9 @@ import styles from './Skills.module.css'
 const iconMap = {
   SiPython, SiJavascript, SiHtml5, SiPostgresql,
   SiFastapi, SiReact, SiMui, SiSupabase,
-  SiGithub, SiNodedotjs, SiVisualparadigm,
+  SiGithub, SiNodedotjs, SiVisualparadigm, SiGit, SiPostman,
   FaBrain, FaMicrochip, FaServer, FaAws, FaPlug, FaLayerGroup,
-  FaBell, FaDocker,
+  FaBell, FaDocker, FaRobot,
   SiVisualstudiocode: SiVisualparadigm,
   SiLangchain: FaBrain,   // fallback for LangChain
   SiHuggingface: FaMicrochip, // fallback for HuggingFace
