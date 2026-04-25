@@ -12,54 +12,68 @@ export const personal = {
 
 export const skills = [
   {
-    category: 'Languages',
+    category: 'Programming Languages',
     items: [
-      { name: 'Python',      icon: 'SiPython',     level: 90 },
-      { name: 'SQL',         icon: 'SiPostgresql',  level: 75 },
-      { name: 'HTML / CSS',  icon: 'SiHtml5',       level: 82 },
+      { name: 'Python',     icon: 'SiPython',    level: 90 },
+      { name: 'SQL',        icon: 'SiPostgresql', level: 75 },
+      { name: 'HTML / CSS', icon: 'SiHtml5',      level: 82 },
     ],
   },
   {
-    category: 'AI / ML',
+    category: 'AI / LLM Technologies',
     items: [
-      { name: 'LangChain',    icon: 'SiLangchain',     level: 88 },
-      { name: 'HuggingFace',  icon: 'SiHuggingface',   level: 82 },
-      { name: 'RAG Pipelines',icon: 'FaBrain',         level: 85 },
-      { name: 'Prompt Eng.',  icon: 'FaMicrochip',     level: 83 },
+      { name: 'LangChain',          icon: 'SiLangchain',   level: 88 },
+      { name: 'HuggingFace',        icon: 'SiHuggingface', level: 82 },
+      { name: 'RAG Pipelines',      icon: 'FaBrain',       level: 85 },
+      { name: 'Vector Embeddings',  icon: 'FaMicrochip',   level: 83 },
+      { name: 'Prompt Engineering', icon: 'FaMicrochip',   level: 83 },
+      { name: 'RAGAS',              icon: 'FaBrain',       level: 76 },
     ],
   },
   {
-    category: 'Backend',
+    category: 'Models Used',
     items: [
-      { name: 'FastAPI',    icon: 'SiFastapi',    level: 85 },
-      { name: 'REST APIs',  icon: 'FaServer',     level: 82 },
+      { name: 'Amazon Titan Embed. V1', icon: 'FaAws',       level: 80 },
+      { name: 'Claude Haiku 4.5',       icon: 'FaRobot',     level: 82 },
+      { name: 'GPT-4o-mini',            icon: 'FaMicrochip', level: 78 },
+      { name: 'text-embedding-3-small', icon: 'FaMicrochip', level: 76 },
+      { name: 'Cohere Rerank v3.5',     icon: 'FaBrain',     level: 78 },
     ],
   },
   {
-    category: 'Cloud & Infra',
+    category: 'Backend Development',
     items: [
-      { name: 'AWS S3',       icon: 'FaAws',         level: 78 },
-      { name: 'PostgreSQL',   icon: 'SiPostgresql',  level: 76 },
-      { name: 'Docker',       icon: 'FaDocker',      level: 80 },
-      { name: 'Supabase',     icon: 'SiSupabase',    level: 74 },
-      { name: 'GitHub',       icon: 'SiGithub',      level: 85 },
+      { name: 'FastAPI',   icon: 'SiFastapi', level: 85 },
+      { name: 'REST APIs', icon: 'FaServer',  level: 82 },
     ],
   },
   {
-    category: 'AWS Marketplace',
+    category: 'Databases & Storage',
     items: [
-      { name: 'AWS Marketplace SaaS', icon: 'FaAws',        level: 78 },
-      { name: 'AWS SNS',              icon: 'FaBell',       level: 76 },
+      { name: 'PostgreSQL', icon: 'SiPostgresql', level: 76 },
+      { name: 'Supabase',   icon: 'SiSupabase',   level: 74 },
+      { name: 'AWS S3',     icon: 'FaAws',        level: 78 },
+    ],
+  },
+  {
+    category: 'Cloud & Integrations',
+    items: [
       { name: 'AWS Bedrock',          icon: 'FaLayerGroup', level: 74 },
+      { name: 'AWS SNS',              icon: 'FaBell',       level: 76 },
+      { name: 'AWS Marketplace SaaS', icon: 'FaAws',        level: 78 },
+      { name: 'Gusto MCP',            icon: 'FaServer',     level: 78 },
+      { name: 'Keka API',             icon: 'FaServer',     level: 74 },
+      { name: 'Docker',               icon: 'FaDocker',     level: 80 },
     ],
   },
   {
-    category: 'Tools',
+    category: 'Tools & Technologies',
     items: [
-      { name: 'VS Code',     icon: 'SiVisualstudiocode', level: 92 },
-      { name: 'Claude Code', icon: 'FaRobot',            level: 85 },
       { name: 'Git',         icon: 'SiGit',              level: 88 },
+      { name: 'GitHub',      icon: 'SiGithub',           level: 85 },
+      { name: 'VS Code',     icon: 'SiVisualstudiocode', level: 92 },
       { name: 'Postman',     icon: 'SiPostman',          level: 82 },
+      { name: 'Claude Code', icon: 'FaRobot',            level: 85 },
     ],
   },
 ]
@@ -75,8 +89,8 @@ export const experience = [
     accent: 'cyan',
     tags: ['LangChain', 'RAG', 'FastAPI', 'AWS S3', 'Gusto MCP', 'HuggingFace'],
     bullets: [
-      'Enhanced AI-powered enterprise assistants using LangChain, Hugging Face, and RAG pipelines for intelligent document retrieval and automation.',
-      'Built production-grade RAG system with hybrid retrieval (MMR + BM25), vector embeddings, reranking, and response validation for high accuracy.',
+      'Built production-grade RAG system using LangChain, Amazon Titan Embeddings V1, and Claude Haiku as the generation model, with hybrid retrieval (MMR + BM25), reranking, and response validation.',
+      'Evaluated RAG pipeline quality using RAGAS framework with GPT-4o-mini and text-embedding-3-small, tracking faithfulness, answer relevancy, and context precision metrics.',
       'Optimized LLM latency by ~40–60% via async processing, caching strategies, reranker timeouts, and prompt/chunk optimization.',
       'Implemented memory-efficient query handling, reducing per-request memory by limiting context size and avoiding redundant computations.',
       'Designed concurrency-safe pipelines to handle multiple requests efficiently under load.',
@@ -141,11 +155,11 @@ export const projects = [
     subtitle: 'Enterprise RAG System',
     description:
       'An intelligent HR assistant that answers employee queries using company policy documents. Built with LangChain and RAG architecture featuring hybrid retrieval (MMR + BM25) and reranking. Integrated Gusto MCP and Keka APIs for real-time employee profile, payroll, and HR data.',
-    tech: ['LangChain', 'RAG', 'FastAPI', 'Gusto MCP', 'Keka API', 'PostgreSQL'],
+    tech: ['LangChain', 'RAG', 'FastAPI', 'Amazon Titan Embeddings', 'Claude Haiku', 'RAGAS', 'Gusto MCP', 'PostgreSQL'],
     accent: 'cyan',
     icon: 'FaRobot',
     github: 'ajaychintada',
-    highlights: ['Hybrid MMR + BM25 retrieval', 'Gusto MCP integration', '40–60% latency reduction'],
+    highlights: ['Amazon Titan V1 embeddings + Claude Haiku generation', 'RAGAS evaluation (GPT-4o-mini)', '40–60% latency reduction'],
   },
   {
     title: 'Legal Document Intelligence',
