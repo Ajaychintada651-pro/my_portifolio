@@ -7,6 +7,7 @@ import {
 } from 'react-icons/si'
 import {
   FaBrain, FaMicrochip, FaServer, FaAws, FaPlug, FaLayerGroup,
+  FaBell, FaDocker,
 } from 'react-icons/fa'
 import SectionHeading from '../shared/SectionHeading'
 import { skills } from '../../data/portfolioData'
@@ -18,6 +19,7 @@ const iconMap = {
   SiFastapi, SiReact, SiMui, SiSupabase,
   SiGithub, SiNodedotjs, SiVisualparadigm,
   FaBrain, FaMicrochip, FaServer, FaAws, FaPlug, FaLayerGroup,
+  FaBell, FaDocker,
   SiVisualstudiocode: SiVisualparadigm,
   SiLangchain: FaBrain,   // fallback for LangChain
   SiHuggingface: FaMicrochip, // fallback for HuggingFace

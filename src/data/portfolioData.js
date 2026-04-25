@@ -38,11 +38,19 @@ export const skills = [
   {
     category: 'Cloud & Infra',
     items: [
-      { name: 'AWS S3',       icon: 'FaAws',         level: 70 },
+      { name: 'AWS S3',       icon: 'FaAws',         level: 78 },
       { name: 'PostgreSQL',   icon: 'SiPostgresql',  level: 76 },
       { name: 'Docker',       icon: 'FaDocker',      level: 80 },
       { name: 'Supabase',     icon: 'SiSupabase',    level: 74 },
       { name: 'GitHub',       icon: 'SiGithub',      level: 85 },
+    ],
+  },
+  {
+    category: 'AWS Marketplace',
+    items: [
+      { name: 'AWS Marketplace SaaS', icon: 'FaAws',        level: 78 },
+      { name: 'AWS SNS',              icon: 'FaBell',       level: 76 },
+      { name: 'AWS Bedrock',          icon: 'FaLayerGroup', level: 74 },
     ],
   },
   {
