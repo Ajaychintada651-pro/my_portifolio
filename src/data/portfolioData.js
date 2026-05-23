@@ -38,6 +38,7 @@ export const skills = [
       { name: 'GPT-4o-mini',            icon: 'FaMicrochip', level: 78 },
       { name: 'text-embedding-3-small', icon: 'FaMicrochip', level: 76 },
       { name: 'Cohere Rerank v3.5',     icon: 'FaBrain',     level: 78 },
+      { name: 'Mistral OCR',            icon: 'FaFileAlt',   level: 80 },
     ],
   },
   {
@@ -87,7 +88,7 @@ export const experience = [
     type: 'Full-time',
     current: true,
     accent: 'cyan',
-    tags: ['LangChain', 'RAG', 'FastAPI', 'AWS S3', 'Gusto MCP', 'HuggingFace'],
+    tags: ['LangChain', 'RAG', 'FastAPI', 'AWS S3', 'HuggingFace', 'Keka', 'Razorpay'],
     bullets: [
       'Built production-grade RAG system using LangChain, Amazon Titan Embeddings V1, and Claude Haiku as the generation model, with hybrid retrieval (MMR + BM25), reranking, and response validation.',
       'Evaluated RAG pipeline quality using RAGAS framework with GPT-4o-mini and text-embedding-3-small, tracking faithfulness, answer relevancy, and context precision metrics.',
@@ -95,7 +96,7 @@ export const experience = [
       'Implemented memory-efficient query handling, reducing per-request memory by limiting context size and avoiding redundant computations.',
       'Designed concurrency-safe pipelines to handle multiple requests efficiently under load.',
       'Integrated HRMS platforms via Gusto APIs and MCP architecture to fetch employee profiles, payroll, and HR policies.',
-      'Contributed to AWS-based SaaS deployments with scalable FastAPI services and AWS S3 document storage.',
+      'Benchmarked multiple OCR models for text extraction from legal and HR documents across accuracy, layout preservation, and RAG pipeline compatibility — finalizing Mistral OCR as the production choice after thorough comparative analysis.',
     ],
   },
   {

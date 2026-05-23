@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { FiGithub, FiMail, FiPhone, FiMapPin, FiLinkedin, FiArrowRight } from 'react-icons/fi'
 import SectionHeading from '../shared/SectionHeading'
-import JobMatcher from '../JobMatcher/JobMatcher'
 import { personal } from '../../data/portfolioData'
 import styles from './Contact.module.css'
 
@@ -65,8 +64,6 @@ export default function Contact() {
           subtitle="Let's connect for AI engineering, RAG systems, or full-stack product work."
           align="left"
         />
-
-        <JobMatcher />
 
         {/* CTA Banner */}
         <motion.div
